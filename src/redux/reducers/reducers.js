@@ -1,21 +1,21 @@
-import { FETCH_START, FETCH_SUCCESS, FECH_FAIL } from '../actions/actions';
+import { FETCH_FAILURE, FETCH_START, FETCH_SUCCESS } from '../actions/actions';
 
 const INITIAL_STATE = {
   loading: false,
-  data: null,
   error: null,
+  character: '',
 } 
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_START:
-      return { ...state, loading: true };
+      return { ...state, loading: true, error: null };
     case FETCH_SUCCESS:
-      return {loading: false, error: null, data: action.payload }
-    case FECH_FAIL: 
-      return { loading: false, data: null, error: action.payload }
+      return {loading: false, character: action.payload[0], error: null }
+    case FETCH_FAILURE: 
+      return { ...state, loading: false, error: action.payload }
     default:
-      state;
+      return state;
   }
 }
 

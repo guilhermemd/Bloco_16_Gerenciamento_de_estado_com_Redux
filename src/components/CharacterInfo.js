@@ -24,8 +24,8 @@ class CharacterInfo extends React.Component {
 };
 
 //mapeie o estado global para a propriedade da sua aplicação
-const mapStateToProps = ({reducer: {data, loading, error}}) => ({
-  character: data,
+const mapStateToProps = ({reducer: {character, loading, error}}) => ({
+  character: character,
   loading,
   error,
 });
